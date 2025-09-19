@@ -59,12 +59,18 @@ def load_config(config_path):
     b_max = config["b_max"]
 
 
-def save_config(config_path, save_data):
+def save_config(config_path):
     # TODO: 현재 설정된 전역 변수를 LAB-cal.json 파일로 저장하기
     global l_min, a_min, b_min, l_max, a_max, b_max
 
+    save_data = {
+                    "l_min": l_min, "l_max": l_max,
+                    "a_min": a_min, "a_max": a_max,
+                    "b_min": b_min, "b_max": b_max
+                }
+
     with open(config_path, "w") as fp:
-        json.dump(config_path, fp, indent=4)
+        json.dump(save_data, fp, indent=4)
         print(f"LAB data was saved in {config_path}")
     
 
